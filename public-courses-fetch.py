@@ -44,34 +44,34 @@ def main():
             course_details = fetch_data(token, selected_title)
             st.json(course_details)
             
-            st.title(course_data["title"])
-            st.subheader(course_data["summary"])
-            st.text(f"Difficulty: {course_data['difficulty']} | Subject: {course_data['subject']}")
-        
-            # Features
-            st.write("Course Features:")
-            for feature in course_data["features"]:
-                st.bullet(feature)
-        
-            # Mentor Section
-            st.subheader("Mentor")
-            st.write(course_data["mentor"])
-        
-            # Lessons
-            st.subheader("Lessons")
-            for lesson in course_data["lessons"]:
-                with st.expander(lesson["title"]):
-                    st.write(lesson["summary"])
-                    st.subheader("Topics Covered")
-                    for topic in lesson["topics"]:
-                        st.write("- " + topic["title"])
-        
-            # Language Selection
-            st.subheader("Select Language")
-            language = st.selectbox("Choose a language", course_data["language"])
-            st.write(f"You selected the language: {language}")
-                else:
-                    st.error("Failed to authenticate. Check the API key and network.")
+                    st.title(course_data["title"])
+                    st.subheader(course_data["summary"])
+                    st.text(f"Difficulty: {course_data['difficulty']} | Subject: {course_data['subject']}")
+                
+                    # Features
+                    st.write("Course Features:")
+                    for feature in course_data["features"]:
+                        st.bullet(feature)
+                
+                    # Mentor Section
+                    st.subheader("Mentor")
+                    st.write(course_data["mentor"])
+                
+                    # Lessons
+                    st.subheader("Lessons")
+                    for lesson in course_data["lessons"]:
+                        with st.expander(lesson["title"]):
+                            st.write(lesson["summary"])
+                            st.subheader("Topics Covered")
+                            for topic in lesson["topics"]:
+                                st.write("- " + topic["title"])
+                
+                    # Language Selection
+                    st.subheader("Select Language")
+                    language = st.selectbox("Choose a language", course_data["language"])
+                    st.write(f"You selected the language: {language}")
+        else:
+            st.error("Failed to authenticate. Check the API key and network.")
 
 if __name__ == "__main__":
     main()
