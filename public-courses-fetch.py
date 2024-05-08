@@ -54,10 +54,10 @@ def main():
                 st.write(f"- {feature}")
 
             # Mentor Section
-            avatar_url = f"https://assets.learnapp.com/catalog/courses/8c38e496-ca22-4020-b719-7a253976ef58/{mentor['avatar']}"
-            st.image(avatar_url, caption=mentor['name'], width=300)  # Setting width is optional, adjust based on your layout needs
-            st.write(f"**Name:** {mentor['name']}")
-            st.write(f"**About:** {mentor['about']}")
+            avatar_url = f"https://assets.learnapp.com/catalog/courses/8c38e496-ca22-4020-b719-7a253976ef58/{mentors['avatar']}"
+            st.image(avatar_url, caption=mentors['name'], width=300)  # Setting width is optional, adjust based on your layout needs
+            st.write(f"**Name:** {mentors['name']}")
+            st.write(f"**About:** {mentors['about']}")
 
             
 
