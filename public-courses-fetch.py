@@ -29,7 +29,7 @@ def fetch_data(token, canonical_title):
 # Load JSON data
 @st.cache_data
 def load_titles():
-    with open('C:/Users/ayush/Downloads/finalcourses.json', 'r') as file:
+    with open('finalcourses.json', 'r') as file:
         courses = json.load(file)
         titles = [course['canonicalTitle'] for course in courses]
     return titles
