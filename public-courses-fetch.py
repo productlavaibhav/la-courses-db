@@ -54,8 +54,20 @@ def main():
                 st.write(f"- {feature}")
 
             # Mentor Section
-            st.subheader("Mentor")
-            st.write(course_data["mentors"])
+            
+            
+            if "mentors" in course_data and course_data["mentors"]:
+                st.subheader("Mentors")
+                for mentor in course_data["mentors"]:
+                    # Use the provided full URL directly in the image display
+                    avatar_url = f"https://assets.learnapp.com/catalog/courses/8c38e496-ca22-4020-b719-7a253976ef58/{mentor['avatar']}"
+                    st.image(avatar_url, caption=mentor['name'], width=300)  # Setting width is optional, adjust based on your layout needs
+                    st.write(f"**Name:** {mentor['name']}")
+                    st.write(f"**About:** {mentor['about']}")
+            else:
+                st.write("No mentor information available.")
+
+            
 
             # Lessons
             st.subheader("Lessons")
