@@ -42,7 +42,7 @@ def main():
         token = get_auth_token()
         if token:
             course_data = fetch_data(token, selected_title)
-            st.json(course_data)  # Show JSON data in Streamlit
+            #st.json(course_data)  # Show JSON data in Streamlit
             
             st.title(course_data["title"])
             st.subheader(course_data["summary"])
@@ -51,7 +51,7 @@ def main():
             # Features
             st.write("Course Features:")
             for feature in course_data["features"]:
-                st.bullet(feature)
+                st.write(f"- {feature}")
 
             # Mentor Section
             st.subheader("Mentor")
