@@ -55,7 +55,7 @@ def main():
 
             # Mentor Section
             st.subheader("Mentor")
-            st.write(course_data["mentor"])
+            st.write(course_data["mentors"])
 
             # Lessons
             st.subheader("Lessons")
