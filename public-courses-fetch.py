@@ -70,10 +70,8 @@ def main():
                     for topic in lesson["topics"]:
                         st.write("- " + topic["title"])
 
-            # Language Selection
-            st.subheader("Select Language")
-            language = st.selectbox("Choose a language", course_data["languages"])  # Assuming it's 'languages', not 'language'
-            st.write(f"You selected the language: {language}")
+           
+            
         else:
             st.error("Failed to authenticate. Check the API key and network.")
 
