@@ -37,8 +37,7 @@ def load_titles():
 def main():
     st.title("Course Data Viewer")
     titles = load_titles()
-    subject
-    selected_subject = st.multiselect("Select a Subject", subject)
+    #selected_subject = st.multiselect("Select a Subject", subject)
     selected_title = st.selectbox("Select a Course Title", titles)
     if st.button("Fetch Course Details"):
         token = get_auth_token()
