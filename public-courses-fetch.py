@@ -69,6 +69,7 @@ def main():
                     st.subheader("Topics Covered")
                     for topic in lesson["topics"]:
                         st.write("- " + topic["title"])
+            st.json(course_data)  # Show JSON data in Streamlit
 
            
             
