@@ -2,28 +2,45 @@ import streamlit as st
 import pandas as pd
 import json
 
-# Function to process the JSON and extract desired information into a DataFrame
+# Function to process the JSON and extract comprehensive information into a DataFrame
 def extract_data(json_data):
     # Lists to hold the extracted data
-    topic_ids = []
-    bc_video_ids = []
+    ids, titles, canonicalTitles, isReleaseds, isSecrets = [], [], [], [], []
+    topicIds, topicTitles, topicVideoIdBcs, playbackTimes = [], [], [], []
 
-    # Traversing through the course data to extract Topic ID and Topic Video BC ID
+    # Traversing through the course data to extract various details
     for lesson in json_data.get('lessons', []):
         for topic in lesson.get('topics', []):
-            topic_ids.append(topic.get('topicId'))
-            bc_video_id = topic.get('resource', {}).get('topicVideoIdBc', 'N/A')
-            bc_video_ids.append(bc_video_id)
+            # Appending course-level details
+            ids.append(json_data.get('id'))
+            titles.append(json_data.get('title'))
+            canonicalTitles.append(json_data.get('canonicalTitle'))
+            isReleaseds.append(json_data.get('isReleased'))
+            isSecrets.append(json_data.get('isSecret'))
+            # Appending topic-level details
+            topicIds.append(topic.get('topicId'))
+            topicTitles.append(topic.get('title'))
+            topicVideoId = topic.get('resource', {}).get('topicVideoIdBc', 'N/A')
+            topicVideoIdBcs.append(topicVideoId)
+            playbackTime = topic.get('resource', {}).get('playbackTime', 'N/A')
+            playbackTimes.append(playbackTime)
 
     # Creating the DataFrame
     data = {
-        'Topic ID': topic_ids,
-        'BC Video ID': bc_video_ids
+        'ID': ids,
+        'Title': titles,
+        'Canonical Title': canonicalTitles,
+        'Is Released': isReleaseds,
+        'Is Secret': isSecrets,
+        'Topic ID': topicIds,
+        'Topic Title': topicTitles,
+        'Topic Video ID': topicVideoIdBcs,
+        'Playback Time': playbackTimes
     }
     return pd.DataFrame(data)
 
 # Streamlit app interface
-st.title('Course Topics and Video IDs Extractor')
+st.title('Comprehensive Course Data Extractor')
 
 # File uploader
 uploaded_file = st.file_uploader("Upload your course JSON file")
