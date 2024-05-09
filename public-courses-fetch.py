@@ -55,9 +55,7 @@ def main():
 
             # Mentor Section
 
-            for mentors in course_data["mentors"]:
-                st.write(f"**Name:** {mentors['name']}")
-                st.write(f"**Title:** {mentors['title']} at {mentors['company']}")
+
 
             
 
